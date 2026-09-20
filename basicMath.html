@@ -26,6 +26,21 @@
         const twoDecimalPlaces = lotsOfDecimal.toFixed(2);
         console.log(twoDecimalPlaces);
     </script>
+
+    <script>
+        let myNumber = "74";
+        console.log(myNumber);
+        myNumber += 3;
+        console.log(myNumber);
+
+        /*You end up with the result 743, not 77, because myNumber 
+        is actually defined as a string*/
+
+        console.log(typeof myNumber);
+        myNumber = "74";
+        myNumber = Number(myNumber) + 3;
+        console.log(myNumber);
+    </script>
 </body>
 
 </html>
