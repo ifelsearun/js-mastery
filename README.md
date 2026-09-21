@@ -139,7 +139,3 @@ Comparison operators evaluate expressions and return a Boolean value (`true` or 
 &gt; 💡 **Best Practice**: Always prefer strict equality (`===` / `!==`) over loose equality (`==` / `!=`) to avoid unexpected type-coercion bugs.
 
 ```
-
----
-
-```
