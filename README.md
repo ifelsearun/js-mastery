@@ -139,3 +139,138 @@ Comparison operators evaluate expressions and return a Boolean value (`true` or 
 &gt; 💡 **Best Practice**: Always prefer strict equality (`===` / `!==`) over loose equality (`==` / `!=`) to avoid unexpected type-coercion bugs.
 
 ```
+
+```
+
+
+# JavaScript Foundations: Operators &amp; Maths
+
+A reference guide to JavaScript mathematical operations, string conversions, precedence, and assignment operators based on [JavaScript.info](https://javascript.info/operators).
+
+---
+
+## 📖 Key Terminology
+
+* **Operand (Argument)**: The data value that an operator acts upon (e.g., in `5 * 2`, the operands are `5` and `2`).
+* **Unary Operator**: An operator that takes a single operand (e.g., `-x` for negation).
+* **Binary Operator**: An operator that takes two operands (e.g., `y - x` for subtraction).
+
+---
+
+## 🔢 Arithmetic Operators
+
+JavaScript supports standard arithmetic along with special mathematical operators:
+
+| Operator | Name | Example | Description / Output |
+| :--- | :--- | :--- | :--- |
+| **`+`** | Addition | `2 + 3` | `5` |
+| **`-`** | Subtraction | `5 - 2` | `3` |
+| **`*`** | Multiplication | `3 * 4` | `12` |
+| **`/`** | Division | `10 / 2` | `5` |
+| **`%`** | Remainder (Modulo) | `5 % 2` | Returns remainder (`1`) |
+| **`**`** | Exponentiation | `2 ** 3` | Raises base to power (`8`); `4 ** (1/2) = 2` |
+
+---
+
+## 🔤 String Concatenation &amp; Type Conversion
+
+### 1. Binary `+` with Strings
+If either operand in a binary `+` operation is a string, JavaScript converts the other operand to a string and concatenates them:
+
+```javascript
+alert("my" + "string"); // "mystring"
+alert("1" + 2);        // "12"
+alert(2 + 2 + "1");    // "41" (Evaluated left-to-right: 2+2=4, 4+'1'="41")
+alert("1" + 2 + 2);    // "122" ('1'+2="12", "12"+2="122")
+
+```
+
+&gt; ⚠️ **Note**: Other math operators (`-`, `*`, `/`) convert strings to numbers:
+
+```
+alert(6 - "2"); // 4
+alert("6" / "2"); // 3
+
+```
+
+### 2\. Unary `+` (Numeric Conversion Shorthand)
+
+Applied to a single value, the unary `+` converts non-number types to numbers (identical to `Number(...)`):
+
+```
+alert(+true);       // 1
+alert(+"");         // 0
+alert(+"2" + +"3"); // 5 (Converts strings to numbers before addition)
+
+```
+
+---
+
+## ⚡ Operator Precedence
+
+Operations execute according to priority rules (higher precedence runs first):
+
+| Precedence | Category                  | Operators             |
+| ---------- | ------------------------- | --------------------- |
+| **14**     | Unary plus / negation     | `+`, `-`              |
+| **13**     | Exponentiation            | `**`                  |
+| **12**     | Multiplication / Division | `*`, `/`              |
+| **11**     | Addition / Subtraction    | `+`, `-`              |
+| **2**      | Assignment                | `=`, `+=`, `-=`, etc. |
+| **1**      | Comma                     | `,`                   |
+
+* **Parentheses** **()** override any default precedence rules.
+
+---
+
+## 📝 Assignments &amp; Shortcuts
+
+### Assignment Returns a Value
+
+The `=` operator returns the assigned value, allowing chaining:
+
+```
+let a, b, c;
+a = b = c = 2 + 2; // Evaluates right-to-left: c=4, b=4, a=4
+
+```
+
+### Modify-in-Place
+
+Shortcuts exist for applying an operator and updating the variable in one step:
+
+```
+let n = 2;
+n += 5; // Same as n = n + 5 (n becomes 7)
+n *= 2; // Same as n = n * 2 (n becomes 14)
+
+```
+
+---
+
+## 🔄 Increment &amp; Decrement (`++` / `--`)
+
+* Can **only** be applied to variables (e.g., `counter++`, not `5++`).
+* **Prefix (** **++counter** **)**: Increments and returns the **new** value.
+* **Postfix (** **counter++** **)**: Increments and returns the **old** value (before incrementing).
+
+```
+let counter = 1;
+
+let prefix = ++counter; // counter is 2, prefix gets 2
+let postfix = counter++; // counter becomes 3, postfix gets 2
+
+```
+
+---
+
+## 🛠️ Specialized Operators
+
+* **Bitwise Operators**: Treat numbers as 32-bit integers (`&amp;`, `|`, `^`, `~`, `&lt;&lt;`, `&gt;&gt;`, `&gt;&gt;&gt;`). Used primarily in low-level operations or cryptography.
+* **Comma Operator** **,**: Evaluates multiple expressions separated by commas, but **returns only the result of the last expression**:
+
+```
+let a = (1 + 2, 3 + 4); // Evaluates 1+2, then 3+4, returns 7
+
+```
+
