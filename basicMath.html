@@ -238,6 +238,26 @@
 
         console.log(n); // 16
     </script>
+
+    <script>
+        // Increment/decrement
+
+        let counter = 2;
+        counter++;
+        console.log(counter);
+
+        counter--;
+        console.log(counter);
+
+        // "postfix form" counter++ return old value first
+        //"prefix form" ++counter return the current incremented value
+
+        counter = 1;
+        console.log(2 * ++counter); // 4
+
+        counter = 1;
+        console.log(2 * counter++); // 2, because counter++ returns the "old" value
+    </script>
 </body>
 
 </html>
