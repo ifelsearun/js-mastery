@@ -199,6 +199,29 @@
         // the longer variant
         // alert( Number(apples) + Number(oranges) ); // 5
     </script>
+
+    <script>
+        // Assignment operator =
+        // assignment operator have the lowest precedence of 2
+
+        x = 2 * 2 + 1;
+        console.log(x); // 5
+
+        a = 1;
+        b = 2;
+
+        let c = 3 - (a = b + 1);
+
+        console.log(a); // 3
+        console.log(c); // 0
+
+        //chaining assignments
+
+        a = b = c = 2 + 2;
+        console.log(a);//4
+        console.log(b);//4
+        console.log(c);//4
+    </script>
 </body>
 
 </html>
