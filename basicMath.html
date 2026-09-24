@@ -168,7 +168,36 @@
 
         console.log('6' - 2);//4
         console.log('6' / '2');//3
-        console.log('12' % 6);
+        console.log('12' % 6);//0
+    </script>
+
+    <script>
+        //Numeric conversion, unary +
+        // The unary + operator converts a non-numbers to numbers
+
+        x = 1;
+        console.log(+x);//1 no change
+        y = -2;
+        console.log(+y);//-2 no change
+
+        console.log(+true);//1 convert boolean value to number
+        console.log(+"");//0 convert void value to 0
+
+        // problem:
+        let apples = "2";
+        let oranges = "3";
+
+        console.log(apples + oranges); // "23", the binary plus concatenates strings
+
+        //solution:
+        apples = "2";
+        oranges = "3";
+
+        // both values converted to numbers before the binary plus
+        console.log(+apples + +oranges); // 5
+
+        // the longer variant
+        // alert( Number(apples) + Number(oranges) ); // 5
     </script>
 </body>
 
