@@ -17,12 +17,17 @@
         console.log(message);
 
         //Infinity, -Infinity, NaN values
-        alert(1 / 0);//Infinity
-        alert(-1 / 0);//-Infinity
-        alert(Infinity);
+        console.log(1 / 0);//Infinity
+        console.log(-1 / 0);//-Infinity
+        console.log(Infinity);
 
         //NaN
-        alert("Not a Number" / 2);
+        console.log("Not a Number" / 2);//NaN
+
+        //NaN is sticky 
+        console.log(NaN + 1); // NaN
+        console.log(3 * NaN); // NaN
+        console.log("not a number" / 2 - 1); // NaN
     </script>
 
 </body>
