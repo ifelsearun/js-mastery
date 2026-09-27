@@ -18,7 +18,7 @@ console.log(pi);
 
 var power = "Bankai";
 console.log(power);
- 
+
 power = "Kyokasuigetsu";
 console.log(power);
 

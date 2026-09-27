@@ -1,300 +1,522 @@
-### **JavaScript Foundations: Variables and Operators**
+# JavaScript Foundations: Variables, Data Types, and Operators
 
-#### **1\. Role of JavaScript**
+A comprehensive, production-grade reference guide and study document covering core JavaScript fundamentals: development setup, variable declarations and scoping, dynamic data typing, mathematical operations, operator precedence, increment/decrement rules, assignments, strict comparisons, and detailed practical exercise walkthroughs.
 
-* **JavaScript** is used to make webpages interactive after structuring them with HTML and styling them with CSS[1].
-
-#### **2\. Running JavaScript Code**
-
-* **Inline Scripts**: JavaScript can be placed directly inside an HTML document using the ``[3].
-* **Browser Console**: Output can be sent to the browser console using `console.log()`[2][4]. The console is accessed through the browser's Developer Tools by right-clicking, selecting **Inspect**, and opening the **Console** tab[4].
-* **Live Preview**: Extensions such as Visual Studio Code's **Live Preview** automatically update the browser preview when the file is saved[4].
-
-#### **3\. Variable Declarations**
-
-Variables act as **storage containers** for data in code[3]. JavaScript provides three declaration keywords:
-
-* **let**: Declares variables that **can be reassigned** later[5][6].
-* **const**: Declares variables that **cannot be reassigned**; attempting to reassign a `const` variable throws an error[6][7].
-* **var**: The original declaration method[6]. It allows reassignment like `let`, but contains language quirks and is largely obsolete in modern JavaScript, though it still appears in older code[6].
-
-#### **4\. Numbers and Order of Operations**
-
-* JavaScript follows standard mathematical **Order of Operations** (PEMDAS/BODMAS)[8]:
-  1. **Parentheses** (evaluated first)[8]
-  2. **Exponentiation** (evaluated right-to-left)[8]
-  3. **Multiplication and Division** (evaluated left-to-right)[8]
-  4. **Addition and Subtraction** (evaluated last, left-to-right)
-
-### **Hands-On Assignment Walkthrough**
-
-Here is a clean, step-by-step breakdown of the assignment exercises from the lesson[1]:
-
-* **Simple Addition**: Running `console.log(23 + 97)` prints `120` to the browser console[1]. You can expand on this by chaining six different numbers together with the `+` operator[1].
-* **Order of Operations**: Logging `(4 + 6 + 9) / 77` forces JavaScript to evaluate the sum inside the brackets first before dividing, outputting roughly `0.24675`[1].
-* **Declaring &amp; Updating Variables**:
-  1. **Declare**: Create a variable with `let a = 10;`[1]. Logging `a` outputs `10`[1].
-  2. **Reassign**: Change `a` to a new number without re-declaring `let`[1].
-  3. **Multiply**: Create `let b = 7 * a;`[1]. Logging `b` outputs 7 times whatever your updated value of `a` is[1].
-* **Calculating Percentages with Constants**:
-  1. **Set the maximum**: `const max = 57;`[1]
-  2. **Find the actual score**: `const actual = max - 13;`[1]
-  3. **Calculate the ratio**: `const percentage = actual / max;`[1]
-  4. **Check the result**: Logging `percentage` displays roughly `0.7719`[1].
-
-
-
-## Basic Math : Numbers & Operators
-
-JavaScript uses a single data type, **`Number`**, for both integers (e.g., `10`, `-5`) and floating-point numbers (e.g., `3.14`).
-
-### Useful Methods &amp; Conversions
-* **Format decimals**: Use `.toFixed(n)` to round numbers to `n` decimal places.
-  ```javascript
-  const num = 1.76658;
-  num.toFixed(2); // "1.77" (returns string)
-
-```
-
-* **Convert Strings to Numbers**: Use `Number()` to convert numerical strings before calculations.
-
-```
-let input = "74";
-input = Number(input) + 3; // 77 (instead of string concatenation "743")
-
-```
+Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (*Variables*, *Data types*, *Basic operators, maths*), and **MDN Web Docs** (*Basic math in JavaScript*).
 
 ---
 
-## ➕ Arithmetic Operators
-
-| Operator | Name               | Example   | Description                                    |
-| -------- | ------------------ | --------- | ---------------------------------------------- |
-| **+**    | Addition           | `6 + 9`   | Adds values together                           |
-| **\-**   | Subtraction        | `20 - 15` | Subtracts right value from left value          |
-| **\***   | Multiplication     | `3 * 7`   | Multiplies values                              |
-| **/**    | Division           | `10 / 5`  | Divides left value by right value              |
-| **%**    | Remainder (Modulo) | `8 % 3`   | Returns remainder after integer division (`2`) |
-| **\*\*** | Exponentiation     | `5 ** 2`  | Raises base to power (`25`)                    |
-
----
-
-## 📐 Operator Precedence
-
-JavaScript follows standard mathematical order of operations (**PEMDAS / BODMAS**):
-
-1. **Parentheses** **()**: Evaluated first.
-2. **Exponentiation** **\*\***: Evaluated next.
-3. **Multiplication** **\*** **&amp; Division** **/**: Evaluated left-to-right.
-4. **Addition** **+** **&amp; Subtraction** **\-**: Evaluated left-to-right.
-
-```
-// Overriding default precedence with parentheses
-let result = (50 + 10) / (8 + 2); // 6 (instead of 53.25)
-
-```
+## 📋 Table of Contents
+1. [Introduction & Environment Setup](#1-introduction--environment-setup)
+2. [Variable Declarations & Scoping (`const`, `let`, `var`)](#2-variable-declarations--scoping-const-let-var)
+3. [Data Types in JavaScript (The 8 Fundamental Types)](#3-data-types-in-javascript-the-8-fundamental-types)
+4. [Maths & Arithmetic Operators](#4-maths--arithmetic-operators)
+5. [Operator Precedence & Execution Order](#5-operator-precedence--execution-order)
+6. [Increment & Decrement Operators (`++`, `--`)](#6-increment--decrement-operators---)
+7. [Assignment & Compound Operators](#7-assignment--compound-operators)
+8. [Comparison & Specialized Operators](#8-comparison--specialized-operators)
+9. [Hands-On Assignment Walkthroughs & Solutions](#9-hands-on-assignment-walkthroughs--solutions)
+10. [Best Practices & Common Pitfalls Cheat Sheet](#10-best-practices--common-pitfalls-cheat-sheet)
 
 ---
 
-## ⬆️ Increment &amp; Decrement
+## 1. Introduction & Environment Setup
 
-* **++**: Increases a variable's value by `1`.
-* **\--**: Decreases a variable's value by `1`.
+### The Role of JavaScript
+In modern web development:
+- **HTML** defines the structure and content of the webpage.
+- **CSS** controls the styling, layout, and visual presentation.
+- **JavaScript** adds dynamic behavior, logic, data manipulation, and user interactivity.
 
-```
-let count = 5;
-count++; // count is now 6
+### Running JavaScript Code
 
-// Postfix (count++) returns current value then increments.
-// Prefix (++count) increments value first then returns it.
+#### A. Inline Scripts
+JavaScript can be embedded directly inside an HTML file using the `<script>` tag:
 
-```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Foundations</title>
+</head>
+<body>
 
----
+  <script>
+    // Your JavaScript code executes here
+    console.log("Hello, World!");
+  </script>
 
-## 📝 Assignment Operators
-
-Shortcuts for evaluating an operation and reassigning the result back to the variable:
-
-| Operator | Example  | Equivalent To |
-| -------- | -------- | ------------- |
-| **+=**   | `x += 4` | `x = x + 4`   |
-| **\-=**  | `x -= 3` | `x = x - 3`   |
-| **\*=**  | `x *= 3` | `x = x * 3`   |
-| **/=**   | `x /= 5` | `x = x / 5`   |
-
----
-
-## ⚖️ Comparison Operators
-
-Comparison operators evaluate expressions and return a Boolean value (`true` or `false`).
-
-| Operator             | Name                  | Example   | Description                         |
-| -------------------- | --------------------- | --------- | ----------------------------------- |
-| **\===**             | Strict Equality       | `5 === 5` | `true` (checks value AND data type) |
-| **!==**              | Strict Non-Equality   | `5 !== 3` | `true`                              |
-| **&lt;** **/** **\&gt;**   | Less / Greater Than   | `10 &gt; 5`  | `true`                              |
-| **&lt;=** **/** **\&gt;=** | Less/Greater or Equal | `5 &gt;= 5`  | `true`                              |
-
-&gt; 💡 **Best Practice**: Always prefer strict equality (`===` / `!==`) over loose equality (`==` / `!=`) to avoid unexpected type-coercion bugs.
-
+</body>
+</html>
 ```
 
+#### B. External JavaScript Files
+For maintainability and separation of concerns, keep JavaScript in standalone `.js` files and link them inside HTML:
+
+```html
+<script src="javascript.js"></script>
 ```
 
+#### C. Developer Tools & Console
+1. Right-click any webpage in your browser and select **Inspect** (or press `F12` / `Cmd+Option+I`).
+2. Navigate to the **Console** tab.
+3. Use `console.log()` to output variables, calculations, and diagnostic messages.
 
-# JavaScript Foundations: Operators &amp; Maths
-
-A reference guide to JavaScript mathematical operations, string conversions, precedence, and assignment operators based on [JavaScript.info](https://javascript.info/operators).
-
----
-
-## 📖 Key Terminology
-
-* **Operand (Argument)**: The data value that an operator acts upon (e.g., in `5 * 2`, the operands are `5` and `2`).
-* **Unary Operator**: An operator that takes a single operand (e.g., `-x` for negation).
-* **Binary Operator**: An operator that takes two operands (e.g., `y - x` for subtraction).
+#### D. VS Code Live Preview / Live Server
+Using editor extensions like **Live Preview** or **Live Server** in Visual Studio Code automatically refreshes the browser whenever you save your HTML or JS files.
 
 ---
 
-## 🔢 Arithmetic Operators
+## 2. Variable Declarations & Scoping (`const`, `let`, `var`)
 
-JavaScript supports standard arithmetic along with special mathematical operators:
+A **variable** is a named storage container (or labeled memory box) for storing data in code.
 
-| Operator | Name | Example | Description / Output |
-| :--- | :--- | :--- | :--- |
-| **`+`** | Addition | `2 + 3` | `5` |
-| **`-`** | Subtraction | `5 - 2` | `3` |
-| **`*`** | Multiplication | `3 * 4` | `12` |
-| **`/`** | Division | `10 / 2` | `5` |
-| **`%`** | Remainder (Modulo) | `5 % 2` | Returns remainder (`1`) |
-| **`**`** | Exponentiation | `2 ** 3` | Raises base to power (`8`); `4 ** (1/2) = 2` |
+```
++--------------------------+
+|  Variable Name: username  |
+|  Value: "John"           |
++--------------------------+
+```
 
----
+### Declaration Keywords
 
-## 🔤 String Concatenation &amp; Type Conversion
-
-### 1. Binary `+` with Strings
-If either operand in a binary `+` operation is a string, JavaScript converts the other operand to a string and concatenates them:
+#### 1. `const` (Constant Declaration — Modern Default)
+- **Reassignable**: ❌ No. Once assigned, its binding cannot be changed.
+- **Scope**: Block-scoped (`{ ... }`).
+- **Initial Value**: Must be initialized upon declaration (`const x = 10;`).
+- **Best Practice**: **Always default to `const`** unless you know the value needs to change later.
 
 ```javascript
-alert("my" + "string"); // "mystring"
-alert("1" + 2);        // "12"
-alert(2 + 2 + "1");    // "41" (Evaluated left-to-right: 2+2=4, 4+'1'="41")
-alert("1" + 2 + 2);    // "122" ('1'+2="12", "12"+2="122")
-
+const PI = 3.14159;
+// PI = 3.14; // Throws TypeError: Assignment to constant variable.
 ```
 
-&gt; ⚠️ **Note**: Other math operators (`-`, `*`, `/`) convert strings to numbers:
+#### 2. `let` (Variable Declaration — Reassignable)
+- **Reassignable**: ✅ Yes.
+- **Scope**: Block-scoped (`{ ... }`).
+- **Re-declaration**: Cannot be re-declared in the same scope (`let x = 1; let x = 2;` throws a `SyntaxError`).
+- **Best Practice**: Use when you explicitly expect to reassign a variable later (e.g., counters, accumulated totals).
 
+```javascript
+let score = 10;
+score = 15; // Valid reassignment
 ```
-alert(6 - "2"); // 4
-alert("6" / "2"); // 3
 
+#### 3. `var` (Legacy Declaration — Avoid in Modern Code)
+- **Reassignable**: ✅ Yes.
+- **Scope**: Function-scoped or globally scoped (ignores block `{}` boundaries).
+- **Hoisting Quirks**: Can be used before declaration (evaluates to `undefined`). Allows accidental re-declarations without error.
+- **Best Practice**: **Avoid using `var`**. It is obsolete in modern JavaScript (ES6+).
+
+### Variable Naming Rules & Conventions
+1. **Allowed Characters**: Letters, digits, `$`, and `_`.
+2. **First Character**: Must **not** start with a digit (e.g., `let 1a = 5;` is invalid).
+3. **Case Sensitivity**: `apple` and `APPLE` are two entirely separate variables.
+4. **CamelCase**: Multi-word names should use camelCase (e.g., `currentUserName`, `shoppingCart`).
+5. **Reserved Words**: Language keywords (such as `let`, `const`, `return`, `function`, `class`) cannot be used as variable names.
+
+### Uppercase Constants vs. Runtime Constants
+- **Uppercase Constants (`COLOR_RED = "#F00"`)**: Used as hardcoded aliases for values known prior to execution.
+- **Standard CamelCase Constants (`const pageLoadTime = calculateTime()`)**: Used for constant values calculated dynamically at runtime during execution.
+
+---
+
+## 3. Data Types in JavaScript (The 8 Fundamental Types)
+
+JavaScript is a **dynamically typed language**. Variables are not bound to a fixed data type — a variable can hold a string at one moment and later be assigned a number:
+
+```javascript
+let data = "Hello"; // Currently a string
+data = 42;          // Now a number (No error)
 ```
 
-### 2\. Unary `+` (Numeric Conversion Shorthand)
+JavaScript features **8 fundamental data types**: 7 Primitives and 1 Non-Primitive (`object`).
 
-Applied to a single value, the unary `+` converts non-number types to numbers (identical to `Number(...)`):
+---
 
+### A. Primitive Data Types (Single Atomic Values)
+
+#### 1. `number`
+Represents integers and floating-point numbers up to $\pm(2^{53} - 1)$ (the safe integer range: `-9007199254740991` to `9007199254740991`).
+
+```javascript
+let age = 25;
+let price = 99.99;
 ```
-alert(+true);       // 1
-alert(+"");         // 0
-alert(+"2" + +"3"); // 5 (Converts strings to numbers before addition)
 
+**Special Numeric Values**:
+- **`Infinity` / `-Infinity`**: Represents mathematical infinity $\infty$. Generated by dividing by zero (`1 / 0`) or referencing directly.
+- **`NaN` (Not a Number)**: Represents a computational error resulting from an invalid math operation (e.g., `"text" / 2`).
+  - `NaN` is **sticky**: any mathematical operation on `NaN` returns `NaN` (e.g., `NaN + 5` $
+ightarrow$ `NaN`).
+  - *Exception*: `NaN ** 0` evaluates to `1`.
+
+#### 2. `bigint`
+Represents integers of arbitrary precision beyond the safe limit of $2^{53} - 1$. Created by appending `n` to the end of an integer:
+
+```javascript
+const bigInt = 1234567890123456789012345678901234567890n;
+```
+
+#### 3. `string`
+Textual data enclosed in quotes. There is **no single-character type** in JavaScript (unlike `char` in C/Java); a single character is simply a string of length 1.
+
+Three quote styles exist:
+- **Single Quotes (`'...'`)**: Standard string literal.
+- **Double Quotes (`"..."`)**: Standard string literal.
+- **Backticks (Template Literals `` `...` ``)**: Extended functionality quotes allowing string interpolation via `${expression}`:
+
+```javascript
+let name = "Alice";
+let greeting = `Hello, ${name}! 2 + 2 = ${1 + 1}`; // "Hello, Alice! 2 + 2 = 2"
+```
+
+#### 4. `boolean`
+Logical data type with only two possible values: `true` or `false`.
+
+```javascript
+let isActive = true;
+let isGreater = 4 > 1; // true
+```
+
+#### 5. `null`
+A special standalone type containing only the value `null`. It explicitly represents "nothing", "empty", or "value unknown".
+
+```javascript
+let userAge = null; // Explicitly unknown
+```
+
+#### 6. `undefined`
+A special standalone type containing only the value `undefined`. Indicates a variable that has been declared but not yet assigned a value.
+
+```javascript
+let userRole;
+console.log(userRole); // undefined
+```
+
+#### 7. `symbol`
+Used to create unique, immutable primitive identifiers for object properties.
+
+```javascript
+const id = Symbol("id");
 ```
 
 ---
 
-## ⚡ Operator Precedence
+### B. Non-Primitive Data Type
 
-Operations execute according to priority rules (higher precedence runs first):
+#### 8. `object`
+Used to store key-value collections of data and more complex data entities (arrays, functions, dates, custom objects).
 
-| Precedence | Category                  | Operators             |
-| ---------- | ------------------------- | --------------------- |
-| **14**     | Unary plus / negation     | `+`, `-`              |
-| **13**     | Exponentiation            | `**`                  |
-| **12**     | Multiplication / Division | `*`, `/`              |
-| **11**     | Addition / Subtraction    | `+`, `-`              |
-| **2**      | Assignment                | `=`, `+=`, `-=`, etc. |
-| **1**      | Comma                     | `,`                   |
-
-* **Parentheses** **()** override any default precedence rules.
-
----
-
-## 📝 Assignments &amp; Shortcuts
-
-### Assignment Returns a Value
-
-The `=` operator returns the assigned value, allowing chaining:
-
-```
-let a, b, c;
-a = b = c = 2 + 2; // Evaluates right-to-left: c=4, b=4, a=4
-
-```
-
-### Modify-in-Place
-
-Shortcuts exist for applying an operator and updating the variable in one step:
-
-```
-let n = 2;
-n += 5; // Same as n = n + 5 (n becomes 7)
-n *= 2; // Same as n = n * 2 (n becomes 14)
-
+```javascript
+let user = {
+  name: "John",
+  age: 30
+};
 ```
 
 ---
 
-## 🔄 Increment &amp; Decrement (`++` / `--`)
+### C. Type Checking with `typeof`
 
-* Can **only** be applied to variables (e.g., `counter++`, not `5++`).
-* **Prefix (** **++counter** **)**: Increments and returns the **new** value.
-* **Postfix (** **counter++** **)**: Increments and returns the **old** value (before incrementing).
+The `typeof` operator inspects a value or variable and returns its data type name as a string. Can be written as `typeof x` or `typeof(x)`:
 
+```javascript
+typeof undefined;   // "undefined"
+typeof 0;           // "number"
+typeof 10n;         // "bigint"
+typeof true;        // "boolean"
+typeof "foo";       // "string"
+typeof Symbol();    // "symbol"
+typeof { a: 1 };    // "object"
+
+// Historical Language Quirks:
+typeof null;        // "object"   (A known bug kept for backwards compatibility)
+typeof alert;       // "function" (Functions belong to object, but return "function")
 ```
+
+---
+
+## 4. Maths & Arithmetic Operators
+
+### Standard Arithmetic Operators
+
+| Operator | Name | Purpose | Code Example | Output |
+| :---: | :--- | :--- | :--- | :---: |
+| **`+`** | Addition | Adds two numbers together | `6 + 9` | `15` |
+| **`-`** | Subtraction | Subtracts right number from left | `20 - 15` | `5` |
+| **`*`** | Multiplication | Multiplies two numbers | `3 * 7` | `21` |
+| **`/`** | Division | Divides left number by right | `10 / 5` | `2` |
+| **`%`** | Remainder (Modulo) | Returns remainder after integer division | `8 % 3` | `2` *(3 goes into 8 twice, 2 left over)* |
+| **`**`** | Exponentiation | Raises base to an exponent power | `5 ** 2` | `25` *($5^2$)* |
+
+> 💡 **Square & Cube Roots via Exponentiation**: Fractional powers calculate roots: `4 ** (1/2)` yields `2` (square root), and `8 ** (1/3)` yields `2` (cube root).
+
+---
+
+### String Concatenation vs. Numeric Conversion
+
+#### 1. Binary `+` with Strings
+If **either operand** in a binary `+` operation is a string, JavaScript converts the other operand to a string and concatenates them:
+
+```javascript
+"my" + "string"; // "mystring"
+"1" + 2;         // "12"
+2 + '1';         // "21"
+```
+
+**Evaluation Order Matters (Left-to-Right)**:
+```javascript
+2 + 2 + "1"; // "41" (Step 1: 2 + 2 = 4; Step 2: 4 + "1" = "41")
+"1" + 2 + 2; // "122" (Step 1: "1" + 2 = "12"; Step 2: "12" + 2 = "122")
+```
+
+#### 2. Other Arithmetic Operators (`-`, `*`, `/`)
+Unlike binary `+`, all other arithmetic operators **always convert string operands into numbers**:
+
+```javascript
+6 - "2";   // 4  (converts "2" to number 2)
+"6" / "2"; // 3  (converts both to numbers)
+"4px" - 2; // NaN ("4px" fails number conversion)
+```
+
+#### 3. Unary `+` Operator (Numeric Conversion Shorthand)
+When applied to a single value, the unary `+` converts non-number operands into numbers (shorthand for `Number(...)`):
+
+```javascript
++x;       // No effect if x is already a number
++"10";    // 10 (converts string "10" to number 10)
++true;    // 1
++"";      // 0
+
+// Useful for converting HTML form/prompt inputs:
+let apples = "2";
+let oranges = "3";
+console.log(+apples + +oranges); // 5 (converts both before binary +)
+```
+
+---
+
+## 5. Operator Precedence & Execution Order
+
+When an expression contains multiple operators, execution order is determined by **operator precedence** (larger number = executed first). Equal precedence operators evaluate left-to-right (except exponentiation and assignment, which evaluate right-to-left).
+
+### Precedence Hierarchy (Extract)
+
+| Precedence | Category / Operator Name | Operator Sign | Associativity |
+| :---: | :--- | :---: | :---: |
+| **18** | Grouping Parentheses | `()` | Left-to-Right |
+| **15** | Postfix Increment / Decrement | `x++`, `x--` | Left-to-Right |
+| **14** | Unary Plus / Negation / Prefix Inc | `+`, `-`, `++x`, `--x` | Right-to-Left |
+| **13** | Exponentiation | `**` | **Right-to-Left** |
+| **12** | Multiplication / Division / Modulo | `*`, `/`, `%` | Left-to-Right |
+| **11** | Addition / Subtraction | `+`, `-` | Left-to-Right |
+| **9** | Comparison Operators | `<`, `>`, `<=`, `>=` | Left-to-Right |
+| **8** | Equality Operators | `===`, `!==`, `==`, `!=` | Left-to-Right |
+| **2** | Assignment Operators | `=`, `+=`, `-=`, etc. | **Right-to-Left** |
+| **1** | Comma Operator | `,` | Left-to-Right |
+
+### Example Evaluation
+
+```javascript
+// Unparenthesized:
+let val = 50 + 10 / 8 + 2; 
+// 10 / 8 = 1.25 -> 50 + 1.25 + 2 = 53.25
+
+// Parentheses override precedence:
+let valFixed = (50 + 10) / (8 + 2); 
+// (60) / (10) = 6
+```
+
+---
+
+## 6. Increment & Decrement Operators (`++`, `--`)
+
+Increases or decreases a numeric variable by `1`. **Can only be applied to variables** (e.g., `counter++`), not raw numbers (`5++` throws a SyntaxError).
+
+- **Prefix Form (`++counter`)**: Increments the variable first, then returns the **new** updated value.
+- **Postfix Form (`counter++`)**: Returns the **old** current value first, then increments the variable.
+
+### Detailed Behavior Comparison
+
+```javascript
+// 1. Postfix Form (Returns old value)
+let x = 1;
+let a = x++; // 'a' receives 1, 'x' becomes 2
+console.log(a); // 1
+console.log(x); // 2
+
+// 2. Prefix Form (Returns new value)
+let y = 1;
+let b = ++y; // 'y' becomes 2, 'b' receives 2
+console.log(b); // 2
+console.log(y); // 2
+```
+
+### Prefix vs Postfix in Expressions
+
+```javascript
 let counter = 1;
+console.log(2 * ++counter); // 4 (counter incremented to 2 first: 2 * 2 = 4)
 
-let prefix = ++counter; // counter is 2, prefix gets 2
-let postfix = counter++; // counter becomes 3, postfix gets 2
-
+let count = 1;
+console.log(2 * count++);   // 2 (count++ returns old value 1: 2 * 1 = 2, then count becomes 2)
 ```
+
+> 💡 **Clean Code Rule**: Avoid embedding `++` or `--` inside complex expressions. Maintain a "one action per line" coding style for maximum readability.
 
 ---
 
-## 🛠️ Specialized Operators
+## 7. Assignment & Compound Operators
 
-* **Bitwise Operators**: Treat numbers as 32-bit integers (`&amp;`, `|`, `^`, `~`, `&lt;&lt;`, `&gt;&gt;`, `&gt;&gt;&gt;`). Used primarily in low-level operations or cryptography.
-* **Comma Operator** **,**: Evaluates multiple expressions separated by commas, but **returns only the result of the last expression**:
+The assignment operator `=` stores a value in a variable and **returns that value**.
 
+### 1. Assignment Returns a Value
+```javascript
+let a = 1;
+let b = 2;
+let c = 3 - (a = b + 1); // (a = 3) evaluates to 3 -> c = 3 - 3 = 0
 ```
-let a = (1 + 2, 3 + 4); // Evaluates 1+2, then 3+4, returns 7
 
-
-# JavaScript Foundations: Data Types
-
-A summary guide to data types and type checking in JavaScript based on [JavaScript.info](https://javascript.info/types).
-
----
-
-## 🔄 Dynamic Typing
-
-JavaScript is a **dynamically typed language**. Variables are not bound to a specific data type; a variable can hold a string at one moment and be reassigned to a number later:
+### 2. Chained Assignments
+Evaluates **right-to-left**:
 
 ```javascript
-let message = "hello";
-message = 123456; // Valid in JavaScript
-📦 The 8 Basic Data TypesJavaScript has 7 primitive data types and 1 non-primitive data type (object).1. Primitive Data TypesData TypeDescriptionExample / NotesnumberRepresents both integers and floating-point numbers123, 12.345bigintRepresents integers of arbitrary length12345678901234567890n (appends n)stringTextual data; surrounded by quotes"Hello", 'World', `Value: \${val}`booleanLogical type with two values: true or falselet isGreater = 4 > 1;nullRepresents "nothing", "empty", or "value unknown"let age = null;undefinedRepresents an unassigned variablelet age; (age is undefined)symbolCreates unique identifiers for objectsSymbol("id")2. Non-Primitive Data Typeobject: Used to store collections of data and more complex entities (unlike primitives, which hold a single value).🔣 Special Values & QuirksSpecial Numeric ValuesInfinity / -Infinity: Represents mathematical infinity $\infty$ (e.g., 1 / 0).NaN: Computational error resulting from an invalid math operation (e.g., "text" / 2). NaN is "sticky"—any math operation with NaN yields NaN (except NaN ** 0, which is 1).String Quotes & InterpolationDouble/Single Quotes (" " / ' '): Standard quotes with no functional difference.Backticks (` `): Allow variable/expression embedding using ${...}:let name = "John";
-alert(`Hello, ${name}!`); // "Hello, John!"
-alert(`Result: ${1 + 2}`); // "Result: 3"
-🔍 The typeof OperatorReturns the data type of an operand as a string. Can be used as typeof x or typeof(x).typeof undefined // "undefined"
-typeof 0         // "number"
-typeof 10n       // "bigint"
-typeof true      // "boolean"
-typeof "foo"     // "string"
-typeof Symbol()  // "symbol"
-typeof Math      // "object"
-⚠️ Language Quirkstypeof null $\rightarrow$ "object": An officially acknowledged legacy bug in JavaScript; null is a primitive, not an object.typeof alert $\rightarrow$ "function": Functions belong to the object type, but typeof handles them as "function" for convenience.
+let a, b, c;
+a = b = c = 2 + 2; // Step 1: 2+2=4 -> c=4 -> b=4 -> a=4
+```
 
+### 3. Modify-in-Place (Compound Assignment Shorthands)
+
+Apply an arithmetic operation and store the result back into the same variable:
+
+| Operator | Syntax | Equivalent Code |
+| :---: | :--- | :--- |
+| **`+=`** | `n += 5` | `n = n + 5` |
+| **`-=`** | `n -= 3` | `n = n - 3` |
+| **`*=`** | `n *= 2` | `n = n * 2` |
+| **`/=`** | `n /= 4` | `n = n / 4` |
+| **`%=`** | `n %= 3` | `n = n % 3` |
+
+Compound assignments share the same low precedence as basic assignment (`2`), executing after other mathematical calculations on the right-hand side:
+
+```javascript
+let n = 2;
+n *= 3 + 5; // Evaluates (3 + 5 = 8) first -> n = n * 8 -> n = 16
+```
+
+---
+
+## 8. Comparison & Specialized Operators
+
+### Comparison Operators
+
+Comparison operators run boolean tests and return `true` or `false`.
+
+| Operator | Name | Purpose | Example | Result |
+| :---: | :--- | :--- | :--- | :---: |
+| **`===`** | Strict Equality | Tests value **AND** data type match | `5 === 5` | `true` |
+| **`!==`** | Strict Inequality | Tests if value or data type differ | `5 !== "5"` | `true` |
+| **`<`** | Less Than | Tests if left operand is smaller | `10 < 20` | `true` |
+| **`>`** | Greater Than | Tests if left operand is larger | `10 > 5` | `true` |
+| **`<=`** | Less Than or Equal | Tests lower bound | `5 <= 5` | `true` |
+| **`>=`** | Greater Than or Equal | Tests upper bound | `5 >= 4` | `true` |
+
+> ⚠️ **Strict vs. Loose Equality**: Avoid loose equality (`==` and `!=`) because they perform implicit type coercion (e.g., `0 == ""` is `true`, `false == "0"` is `true`). Always use strict equality (`===` and `!==`).
+
+---
+
+### Specialized Operators
+
+#### 1. Bitwise Operators
+Treat operands as 32-bit binary integers and operate on individual bits:
+- **AND (`&`)**, **OR (`|`)**, **XOR (`^`)**, **NOT (`~`)**, **Left Shift (`<<`)**, **Right Shift (`>>`)**, **Zero-fill Right Shift (`>>>`)**.
+- Used primarily in graphics, performance-critical binary algorithms, and cryptography.
+
+#### 2. Comma Operator (`,`)
+Evaluates multiple expressions from left to right, but **returns only the result of the last expression**:
+
+```javascript
+let a = (1 + 2, 3 + 4); // Evaluates 1+2=3, then 3+4=7. Returns 7.
+```
+
+---
+
+## 9. Hands-On Assignment Walkthroughs & Solutions
+
+Complete solution code for all curriculum exercises covering basic math, variable reassignment, and percentage calculations:
+
+### Exercise 1: Basic Addition
+```javascript
+// Task 1: Add 2 numbers together
+console.log(23 + 97); // Outputs: 120
+
+// Task 2: Add 6 different numbers together
+console.log(12 + 24 + 36 + 48 + 60 + 72); // Outputs: 252
+```
+
+### Exercise 2: Mathematical Precedence
+```javascript
+// Force addition before division using parentheses
+console.log((4 + 6 + 9) / 77); // Outputs: 0.24675324675324675
+```
+
+### Exercise 3: Variable Declarations & Reassignments
+```javascript
+// Step 1: Declare variable 'a' and log it
+let a = 10;
+console.log(a); // Outputs: 10
+
+// Step 2: Reassign 'a' with a new number value (without re-declaring let)
+a = 25;
+console.log(a); // Outputs: 25
+
+// Step 3: Multiply by another variable
+let b = 7 * a;
+console.log(b); // Outputs: 175
+```
+
+### Exercise 4: Percentage Calculations using Constants
+```javascript
+// Declare maximum threshold
+const max = 57;
+
+// Calculate actual value
+const actual = max - 13; // 44
+
+// Calculate percentage ratio
+const percentage = actual / max; // 44 / 57
+
+// Output percentage (~0.7719 or 77.19%)
+console.log(percentage); // Outputs: 0.7719298245614035
+```
+
+### Exercise 5: Input Numeric Conversion (`+prompt` or `Number()`)
+```javascript
+// Issue: prompt returns string inputs ("1" and "2"), leading to string concatenation "12"
+// Fix: Use unary + or Number() to convert input strings into numbers before adding
+
+let num1 = +prompt("First number?", 1);
+let num2 = +prompt("Second number?", 2);
+
+alert(num1 + num2); // Outputs: 3
+```
+
+---
+
+## 10. Best Practices & Common Pitfalls Cheat Sheet
+
+### ✅ Do's
+- **Default to `const`**: Use `const` for all variable declarations by default; only switch to `let` when reassignment is required.
+- **Use Strict Equality**: Always use `===` and `!==` to avoid subtle type coercion bugs.
+- **Use Descriptive Names**: Choose self-explanatory camelCase variable names (e.g., `currentUserName`, `shoppingCartTotal`).
+- **Convert Input Strings Explicitly**: Convert form and input values using `Number(val)` or unary `+val` before performing arithmetic.
+
+### ❌ Don'ts
+- **Avoid `var`**: Never use `var` in modern JavaScript scripts.
+- **Do Not Re-declare Variables**: Re-declaring a `let` or `const` variable in the same scope throws a `SyntaxError`.
+- **Avoid Obscure Tricks**: Do not chain complex assignments (`a = b = c`) or embed `++`/`--` inside multi-operator calculations.
+- **Do Not Compare Loose Types**: Avoid `==` and `!=` which produce confusing results like `null == undefined` being `true` while `null === undefined` is `false`.
+
+```
