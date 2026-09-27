@@ -272,5 +272,29 @@ let postfix = counter++; // counter becomes 3, postfix gets 2
 ```
 let a = (1 + 2, 3 + 4); // Evaluates 1+2, then 3+4, returns 7
 
-```
+
+# JavaScript Foundations: Data Types
+
+A summary guide to data types and type checking in JavaScript based on [JavaScript.info](https://javascript.info/types).
+
+---
+
+## 🔄 Dynamic Typing
+
+JavaScript is a **dynamically typed language**. Variables are not bound to a specific data type; a variable can hold a string at one moment and be reassigned to a number later:
+
+```javascript
+let message = "hello";
+message = 123456; // Valid in JavaScript
+📦 The 8 Basic Data TypesJavaScript has 7 primitive data types and 1 non-primitive data type (object).1. Primitive Data TypesData TypeDescriptionExample / NotesnumberRepresents both integers and floating-point numbers123, 12.345bigintRepresents integers of arbitrary length12345678901234567890n (appends n)stringTextual data; surrounded by quotes"Hello", 'World', `Value: \${val}`booleanLogical type with two values: true or falselet isGreater = 4 > 1;nullRepresents "nothing", "empty", or "value unknown"let age = null;undefinedRepresents an unassigned variablelet age; (age is undefined)symbolCreates unique identifiers for objectsSymbol("id")2. Non-Primitive Data Typeobject: Used to store collections of data and more complex entities (unlike primitives, which hold a single value).🔣 Special Values & QuirksSpecial Numeric ValuesInfinity / -Infinity: Represents mathematical infinity $\infty$ (e.g., 1 / 0).NaN: Computational error resulting from an invalid math operation (e.g., "text" / 2). NaN is "sticky"—any math operation with NaN yields NaN (except NaN ** 0, which is 1).String Quotes & InterpolationDouble/Single Quotes (" " / ' '): Standard quotes with no functional difference.Backticks (` `): Allow variable/expression embedding using ${...}:let name = "John";
+alert(`Hello, ${name}!`); // "Hello, John!"
+alert(`Result: ${1 + 2}`); // "Result: 3"
+🔍 The typeof OperatorReturns the data type of an operand as a string. Can be used as typeof x or typeof(x).typeof undefined // "undefined"
+typeof 0         // "number"
+typeof 10n       // "bigint"
+typeof true      // "boolean"
+typeof "foo"     // "string"
+typeof Symbol()  // "symbol"
+typeof Math      // "object"
+⚠️ Language Quirkstypeof null $\rightarrow$ "object": An officially acknowledged legacy bug in JavaScript; null is a primitive, not an object.typeof alert $\rightarrow$ "function": Functions belong to the object type, but typeof handles them as "function" for convenience.
 
