@@ -2,7 +2,7 @@
 
 A comprehensive, production-grade reference guide and study document covering core JavaScript fundamentals: development setup, variable declarations and scoping, dynamic data typing, mathematical operations, operator precedence, increment/decrement rules, assignments, strict comparisons, and detailed practical exercise walkthroughs.
 
-Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (*Variables*, *Data types*, *Basic operators, maths*), and **MDN Web Docs** (*Basic math in JavaScript*).
+Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (*Variables*, *Data types*, *Basic operators, maths*), and **MDN Web Docs** (*Basic math in JavaScript*, *Handling text — strings in JavaScript*).
 
 ---
 
@@ -15,8 +15,9 @@ Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (
 6. [Increment & Decrement Operators (`++`, `--`)](#6-increment--decrement-operators---)
 7. [Assignment & Compound Operators](#7-assignment--compound-operators)
 8. [Comparison & Specialized Operators](#8-comparison--specialized-operators)
-9. [Hands-On Assignment Walkthroughs & Solutions](#9-hands-on-assignment-walkthroughs--solutions)
-10. [Best Practices & Common Pitfalls Cheat Sheet](#10-best-practices--common-pitfalls-cheat-sheet)
+9. [Handling Text: Strings in JavaScript](#9-handling-text-strings-in-javascript)
+10. [Hands-On Assignment Walkthroughs & Solutions](#10-hands-on-assignment-walkthroughs--solutions)
+11. [Best Practices & Common Pitfalls Cheat Sheet](#11-best-practices--common-pitfalls-cheat-sheet)
 
 ---
 
@@ -443,7 +444,167 @@ let a = (1 + 2, 3 + 4); // Evaluates 1+2=3, then 3+4=7. Returns 7.
 
 ---
 
-## 9. Hands-On Assignment Walkthroughs & Solutions
+
+---
+
+## 9. Handling Text: Strings in JavaScript
+
+In JavaScript, pieces of textual data are known as **strings**. While numbers handle calculations, strings allow programs to output custom messages, process user input, build dynamic HTML content, and format data.
+
+---
+
+### Declaring Strings & Quoting Rules
+
+To create a string literal, wrap your text in quotation marks. Unquoted text is interpreted as a variable or keyword and will raise an error (`ReferenceError` or `SyntaxError`).
+
+```javascript
+// Valid string declarations
+const string1 = "The revolution will not be televised.";
+const string2 = 'The revolution will not be televised.';
+const string3 = `The revolution will not be televised.`;
+
+// Invalid declarations (Throws errors)
+// const bad1 = This is a test;  // SyntaxError / ReferenceError
+// const bad2 = 'This is a test; // Unterminated string literal
+```
+
+#### Matching Quotes
+You **must** use matching quotation marks at both the start and end of a string:
+
+```javascript
+// Throws SyntaxError: Invalid or unexpected token
+// const badQuotes = "This is not allowed!';
+```
+
+---
+
+### Three Quote Types
+
+| Quote Type | Syntax | Description / Key Features |
+| :--- | :--- | :--- |
+| **Single Quotes** | `'Hello'` | Standard string literal. Good for simple strings. |
+| **Double Quotes** | `"Hello"` | Standard string literal. Functionally identical to single quotes. |
+| **Backticks** | `` `Hello` `` | **Template Literal**: Supports interpolation (`${}`), multiline strings, and embedded expressions. |
+
+---
+
+### Template Literals & String Interpolation
+
+Template literals (enclosed in backticks `` `...` ``) provide extended functionality over standard single/double-quoted strings.
+
+#### 1. Embedding Variables & Expressions
+Inside a template literal, use `${expression}` to insert variables or inline calculations dynamically:
+
+```javascript
+const name = "Chris";
+const greeting = `Hello, ${name}!`; 
+console.log(greeting); // "Hello, Chris!"
+
+// Embedded Math Calculations:
+const song = "Fight the Youth";
+const score = 9;
+const maxScore = 10;
+const output = `I like the song ${song}. Score: ${(score / maxScore) * 100}%.`;
+console.log(output); // "I like the song Fight the Youth. Score: 90%."
+```
+
+#### 2. Multiline Strings
+Template literals automatically preserve line breaks directly in code:
+
+```javascript
+const poem = `One day you finally knew
+what you had to do, and began,`;
+
+console.log(poem);
+/*
+Output:
+One day you finally knew
+what you had to do, and began,
+*/
+```
+
+> **Traditional Alternative**: To achieve multiline output in standard single or double-quoted strings, you must explicitly insert the newline escape character `\n`:
+> ```javascript
+> const poem2 = "One day you finally knew\nwhat you had to do, and began,";
+> ```
+
+---
+
+### String Concatenation
+
+Joining strings together is called **concatenation**.
+
+#### 1. Template Literals (Recommended)
+```javascript
+const part1 = "Hello, ";
+const part2 = "how are you?";
+const joined = `${part1}${part2}`; // "Hello, how are you?"
+```
+
+#### 2. The Binary `+` Operator
+```javascript
+const greeting = "Hello";
+const name = "Bob";
+console.log(greeting + ", " + name + "!"); // "Hello, Bob!"
+```
+
+---
+
+### Including Quotes & Escaping Characters
+
+#### 1. Alternating Quote Styles
+If your string contains quotes, the easiest solution is to wrap the string in a *different* quote type:
+
+```javascript
+const quote1 = 'She said "I think so!"';
+const quote2 = `She said "I'm not going in there!"`;
+```
+
+#### 2. Escaping with Backslash (`\`)
+If you must use the same quote type inside the string, prepend a backslash (`\`) to escape the quotation mark so JavaScript treats it as plain text rather than code syntax:
+
+```javascript
+const bigmouth = 'I've got no right to take my place…';
+const quote3 = "She said "I think so!"";
+```
+
+#### Common Escape Sequences
+- `\'` — Single quote
+- `\"` — Double quote
+- `\\` — Backslash
+- `\n` — Newline (Line break)
+- `\t` — Tab space
+
+---
+
+### Numbers vs. Strings & Type Conversions
+
+#### 1. Implicit Coercion in Concatenation
+When concatenating a string and a number using the `+` operator, JavaScript automatically converts the number into a string:
+
+```javascript
+const band = "Front ";
+const number = 242;
+console.log(band + number); // "Front 242" (Type: string)
+```
+
+#### 2. Explicit Conversion Functions
+
+* **`Number(value)`**: Converts a string containing numeric characters into a number data type.
+  ```javascript
+  const inputString = "123";
+  const num = Number(inputString); // 123 (Type: number)
+  ```
+
+* **`String(value)`**: Converts a number or other data type into a string.
+  ```javascript
+  const numValue = 123;
+  const str = String(numValue); // "123" (Type: string)
+  ```
+
+---
+
+## 10. Hands-On Assignment Walkthroughs & Solutions
 
 Complete solution code for all curriculum exercises covering basic math, variable reassignment, and percentage calculations:
 
@@ -505,7 +666,7 @@ alert(num1 + num2); // Outputs: 3
 
 ---
 
-## 10. Best Practices & Common Pitfalls Cheat Sheet
+## 11. Best Practices & Common Pitfalls Cheat Sheet
 
 ### ✅ Do's
 - **Default to `const`**: Use `const` for all variable declarations by default; only switch to `let` when reassignment is required.
