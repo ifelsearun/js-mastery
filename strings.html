@@ -227,6 +227,58 @@
         console.log(string2.substr(7, 6));// Banana
         console.log(string2.substr(7));// Banana, Kiwi
         console.log(string2.substr(-4));// Kiwi
+
+        // Converting to Upper and Lower Case
+
+        //1. JavaScript String toUpperCase():
+        text1 = "Hello World!";
+        text2 = text1.toUpperCase();
+        console.log(text2);// HELLO WORLD!
+        console.log(" ");
+
+        text1 = "HELLO WORLD!";       // String
+        text2 = text1.toLowerCase();  // text2 is text1 converted to lower
+        console.log(text2);
+        console.log(" ");
+
+
+        //2. JavaScript String isWellFormed():
+        // The isWellFormed() method returns true if a string is well formed.
+        // Otherwise it returns false.
+        // A string is not well formed if it contains lone surrogates.
+
+        text1 = "Hello world!";
+        let result = text1.isWellFormed();
+        console.log(result);
+
+        text2 = "Hello World \uD800";
+        result = text2.isWellFormed();
+        console.log(result);
+
+        text3 = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+        Repellat non laudantium quo repellendus nulla alias ullam delectus quaerat 
+        totam beatae! Nesciunt obcaecati labore accusantium dicta at vel. Similique, 
+        impedit officia!`;
+        console.log(text3.isWellFormed());
+
+        //3. JavaScript String toWellFormed():
+        /* The String method toWellFormed() returns a new string where all 
+        "lone surrogates" are replaced with the Unicode replacement character (U+FFFD).
+        */
+
+        text1 = "Hello World \uD800";
+        result = text1.toWellFormed();
+        console.log(result);// Hello World �
+        console.log(" ");
+
+        //3. JavaScript String trim():
+        // The trim() method removes whitespace from both sides of a string:
+
+        text1 = "     Hello World!      ";
+        text2 = text1.trim();
+        console.log(text1);
+        console.log(text2);
+        console.log(" ");
     </script>
 </body>
 
