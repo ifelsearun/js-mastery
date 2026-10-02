@@ -127,9 +127,9 @@
 
         // 1.length
         let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        let length = text.length;
+        let Length = text.length;
         console.log(text);
-        console.log(length);
+        console.log(Length);
 
         // exracting string characters
         // 2. charAt(): The charAt() method returns the character at a specified index (position) in a string
@@ -161,6 +161,15 @@
         console.log(text[7]);
         console.log(text[14]);
         console.log(text[13]);
+        console.log("")
+
+        // The at() method is a new addition to JavaScript.
+        // It allows the use of negative indexes while charAt() do not.
+        const name4 = "Alice";
+        console.log(name4.at(-1));
+
+        // this is the same as at(-1)
+        console.log(name4.charAt(name4.length-1));
     </script>
 </body>
 
