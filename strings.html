@@ -185,6 +185,48 @@
         let text5 = "you!";
         let textJoin2 = text3.concat(" ",text4," ",text5);
         console.log(textJoin2);
+
+        // The concat() method can be used instead of the plus operator. These two lines do the same:
+        text1 = "Hello" + " " + "World!";
+        text2 = "Hello".concat(" ", "world!");
+        console.log(text1);
+        console.log(text2);
+
+        // Extracting String Parts:
+        // There are 3 methods for extracting a part of a string:
+        // 1. JavaScript String slice():
+        // slice() extracts a part of a string and returns the extracted part in a new string.
+        // The method takes 2 parameters: start position, and end position (end not included).
+
+        let string1 = "Apple, Banana, Kiwi";
+        let stringSlice = string1.slice(7, 13);
+        console.log(stringSlice);// Banana
+        console.log(string1.slice(0, 5));// Apple
+
+        // if you want to avoid first part and slice the rest then use one paramter 
+        console.log(string1.slice(7));// Banana, Kiwi
+
+        // If a parameter is negative, the position is counted from the end of the string:
+        console.log(string1.slice(-12));// Banana, Kiwi
+
+        // This example slices out a portion of a string from position -12 to position -6:
+        console.log(string1.slice(-12, -6));// Banana
+
+        // 2. JavaScript String substring():
+        // substring() is similar to slice().
+        // The difference is that start and end values less than 0 are treated as 0 in substring().
+
+        let string2 = "Apple, Banana, Kiwi";
+        let stringSlice2 = string2.substring(7, 13);// Banana
+        console.log(string2.substring(-12, 19));// Apple, Banana, Kiwi
+
+        // 3. JavaScript String substr():
+        // substr() is similar to slice().
+        // difference is that the second parameter specifies the length of the extracted part.
+
+        console.log(string2.substr(7, 6));// Banana
+        console.log(string2.substr(7));// Banana, Kiwi
+        console.log(string2.substr(-4));// Kiwi
     </script>
 </body>
 
