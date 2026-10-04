@@ -169,7 +169,7 @@
         console.log(name4.at(-1));
 
         // this is the same as at(-1)
-        console.log(name4.charAt(name4.length-1));
+        console.log(name4.charAt(name4.length - 1));
 
 
         // JavaScript String concat()
@@ -177,13 +177,13 @@
 
         let text1 = "hello";
         let text2 = "world";
-        let textJoin = text1.concat(" ",text2);
+        let textJoin = text1.concat(" ", text2);
         console.log(textJoin)
 
         let text3 = "How";
         let text4 = "are";
         let text5 = "you!";
-        let textJoin2 = text3.concat(" ",text4," ",text5);
+        let textJoin2 = text3.concat(" ", text4, " ", text5);
         console.log(textJoin2);
 
         // The concat() method can be used instead of the plus operator. These two lines do the same:
@@ -279,6 +279,108 @@
         console.log(text1);
         console.log(text2);
         console.log(" ");
+
+        //4. javaScript string trimStart()
+        // the trimSart() method removes whitespace from only the start of a string
+        console.log(text1.trimStart());// 'Hello World!    '
+
+        //5. javascript trimEnd():
+        // the trimEnd() method removes whitespace from only the end of a string
+        console.log(text1.trimEnd());// '    Hello World!'
+
+
+        //6. javaScript string padStart() method:
+        // the padStart() method pads a string at the start of another string until it reaches a given length
+        text = "5";
+        console.log(text.padStart(5, "0"));
+
+        //The padStart() method is a string method.
+        //ad a number, convert the number to a string first.
+        num = 5;
+        text = num.toString();
+        console.log(text.padStart(4, "+"));
+
+        //7. javaScript string padEnd() method:
+        // the pasEnd() method pads a string at the end of another string until it reaches a given length
+        text = "luv";
+        console.log(text.padEnd(7, "u"));
+
+
+        //8. JavaScript String repeat()
+        //The repeat() method returns a string with a number of copies of a string.
+        // //The repeat() method returns a new string.
+        // //The repeat() method does not change the original string.
+        text = "Hello World!";
+        result = text.repeat(2);
+        console.log(result);
+        console.log(result.repeat(2));
+
+        //9. javaScript replace() method:
+        // the replace() method replaces a specified value with another in string
+        text = "please visit Microsoft!";
+        new_text = text.replace("Microsoft", "Google");
+        console.log(new_text);
+
+        // The replace() method does not change the string it is called on.
+        // The replace() method returns a new string.
+        // The replace() method replaces only the first match
+
+        // If you want to replace all matches, use a regular expression with the /g flag set. See examples below.
+        // By default, the replace() method replaces only the first match:
+
+        text = "please visit Google and Google";
+        new_text = text.replace("Google", "Microsoft");
+        console.log(new_text);
+
+        //To replace all matches, use a regular expression with a /g flag (global match):
+        text = "please visit Google and Google";
+        new_text = text.replace(/Google/g, "Microsoft");
+        console.log(new_text);
+
+        text = "javaScript javaScript javaScript javaScript javaScript";
+        console.log(text.replace(/javaScript/g, "PYTHON"));
+
+        //To replace case insensitive, use a regular expression with an /i flag (insensitive):
+        text = "PYTHON";
+        new_text = text.replace(/Python/i, "JavaScript");
+        console.log(new_text);
+
+        text = "PYTHON PYTHON PYTHON PYTHON PYTHON";
+        new_text = text.replace(/Python/ig, "JavaScript");
+        console.log(new_text);
+
+
+        //10. javaScript replaceAll() method:
+        // the replaceAll() method used to replace all the no. of sepcified values with a string
+
+        text = "I love cats. Cats are easy to love, Cats are very popular";
+        text = text.replaceAll("cats", "dogs");
+        text = text.replaceAll("Cats", "Dogs");
+        console.log(text);
+
+        // The replaceAll() method allows you to specify a regular expression instead of a string to be replaced.
+        // If the parameter is a regular expression, the global flag (g) must be set, otherwise a TypeError is thrown.
+        text = "I love cats. Cats are easy to love, Cats are very popular";
+        text = text.replaceAll(/cats/g, "dogs");
+        text = text.replaceAll(/Cats/g, "Dogs");
+        console.log(text);
+
+        text = "javaScript, javaScript, JAVASCRIPT, javaScript, JAVASCRIPT";
+        text = text.replaceAll(/javaScript/gi, "Python");
+        console.log(text);
+
+
+        //11. JavaScript String split():
+        // A string can be converted to an array with the split() method:
+        text = "Hello World!";
+        const myArr = text.split();
+        console.log(myArr);
+
+        //text.split("")     // Split on characters
+        //text.split(",")    // Split on commas
+        //text.split(" ");    // Split on spaces
+        //text.split("|")    // Split on pipe
+
     </script>
 </body>
 
