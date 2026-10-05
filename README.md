@@ -2,7 +2,7 @@
 
 A comprehensive, production-grade reference guide and study document covering core JavaScript fundamentals: development setup, variable declarations and scoping, dynamic data typing, mathematical operations, operator precedence, increment/decrement rules, assignments, strict comparisons, and detailed practical exercise walkthroughs.
 
-Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (*Variables*, *Data types*, *Basic operators, maths*), and **MDN Web Docs** (*Basic math in JavaScript*, *Handling text — strings in JavaScript*).
+Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (*Variables*, *Data types*, *Basic operators, maths*), and **MDN Web Docs** (*Basic math in JavaScript*, *Handling text — strings in JavaScript*), and **W3Schools** (*JavaScript String Methods & Search*).
 
 ---
 
@@ -16,8 +16,9 @@ Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (
 7. [Assignment & Compound Operators](#7-assignment--compound-operators)
 8. [Comparison & Specialized Operators](#8-comparison--specialized-operators)
 9. [Handling Text: Strings in JavaScript](#9-handling-text-strings-in-javascript)
-10. [Hands-On Assignment Walkthroughs & Solutions](#10-hands-on-assignment-walkthroughs--solutions)
-11. [Best Practices & Common Pitfalls Cheat Sheet](#11-best-practices--common-pitfalls-cheat-sheet)
+10. [JavaScript String Methods & Search (W3Schools Guide)](#10-javascript-string-methods--search-w3schools-guide)
+11. [Hands-On Assignment Walkthroughs & Solutions](#11-hands-on-assignment-walkthroughs--solutions)
+12. [Best Practices & Common Pitfalls Cheat Sheet](#12-best-practices--common-pitfalls-cheat-sheet)
 
 ---
 
@@ -604,7 +605,157 @@ console.log(band + number); // "Front 242" (Type: string)
 
 ---
 
-## 10. Hands-On Assignment Walkthroughs & Solutions
+---
+
+## 10. JavaScript String Methods & Search (W3Schools Guide)
+
+JavaScript string methods help you inspect, extract, transform, and search textual data. 
+
+> ⚠️ **Key Concept: String Immutability**  
+> All string methods return a **new string**. They do **not** modify the original string, because strings in JavaScript are immutable.
+
+---
+
+### A. Extracting & Accessing Characters
+
+| Method / Property | Description | Code Example | Output |
+| :--- | :--- | :--- | :--- |
+| **`length`** | Property returning the total character count | `"Hello".length` | `5` |
+| **`charAt(position)`** | Returns character at specified index | `"Hello".charAt(1)` | `"e"` |
+| **`charCodeAt(position)`** | Returns UTF-16 code (integer) at index | `"A".charCodeAt(0)` | `65` |
+| **`at(position)`** | Returns character at index (supports negative indexes) | `"Hello".at(-1)` | `"o"` |
+| **`str[index]`** | Bracket property access (read-only array-like access) | `"Hello"[0]` | `"H"` |
+
+```javascript
+let text = "JavaScript";
+
+console.log(text.length);      // 10
+console.log(text.charAt(0));    // "J"
+console.log(text.at(-1));       // "t" (ES2022 negative indexing)
+console.log(text[2]);          // "v"
+```
+
+---
+
+### B. Extracting String Parts
+
+| Method | Parameters | Behavior with Negative Indexes | Example | Output |
+| :--- | :--- | :--- | :--- | :--- |
+| **`slice(start, end)`** | `start` index to `end` index (exclusive) | **Supported** (counts from end of string) | `"Apple, Banana".slice(7, 13)` | `"Banana"` |
+| **`substring(start, end)`** | `start` index to `end` index (exclusive) | Indexes `< 0` are treated as `0` | `"Apple, Banana".substring(7, 13)` | `"Banana"` |
+| **`substr(start, length)`** | `start` index and `length` of extracted part | `start` < 0 counts from end (*Legacy*) | `"Apple, Banana".substr(7, 6)` | `"Banana"` |
+
+```javascript
+let str = "Apple, Banana, Kiwi";
+
+// slice(start, end)
+console.log(str.slice(7, 13));   // "Banana"
+console.log(str.slice(-12, -6)); // "Banana" (negative counting from end)
+
+// substring(start, end)
+console.log(str.substring(0, 5)); // "Apple"
+
+// substr(start, length) - Legacy method
+console.log(str.substr(7, 6));    // "Banana"
+```
+
+---
+
+### C. Case Transformation, Trimming & Padding
+
+* **`toUpperCase()`**: Converts string to uppercase.
+* **`toLowerCase()`**: Converts string to lowercase.
+* **`concat(str1, str2, ...)`**: Joins two or more strings together (alternative to binary `+`).
+* **`trim()`**: Removes whitespace from both ends of a string.
+* **`trimStart()` / `trimEnd()`**: Removes whitespace from only the start or end.
+* **`padStart(targetLength, padString)`**: Pads the string at the start until it reaches `targetLength`.
+* **`padEnd(targetLength, padString)`**: Pads the string at the end until it reaches `targetLength`.
+* **`repeat(count)`**: Returns a new string with `count` copies concatenated together.
+
+```javascript
+let text1 = "  Hello World!  ";
+
+console.log(text1.toUpperCase()); // "  HELLO WORLD!  "
+console.log(text1.trim());        // "Hello World!"
+console.log(text1.trimStart());   // "Hello World!  "
+
+let numStr = "5";
+console.log(numStr.padStart(4, "0")); // "0005"
+console.log(numStr.padEnd(4, "x"));   // "5xxx"
+
+console.log("Ha".repeat(3));          // "HaHaHa"
+```
+
+---
+
+### D. Replacing String Content
+
+* **`replace(searchValue, newValue)`**: Replaces the **first match** of a string or regular expression.
+* **`replaceAll(searchValue, newValue)`**: Replaces **all matches** of a string or regular expression.
+
+```javascript
+let text = "Please visit Microsoft and Microsoft!";
+
+// replace() only affects the first match
+console.log(text.replace("Microsoft", "W3Schools")); 
+// "Please visit W3Schools and Microsoft!"
+
+// Case-insensitive replacement using Regex (/i)
+console.log(text.replace(/MICROSOFT/i, "W3Schools")); 
+
+// replaceAll() replaces every occurrence
+console.log(text.replaceAll("Microsoft", "W3Schools")); 
+// "Please visit W3Schools and W3Schools!"
+```
+
+---
+
+### E. Converting Strings to Arrays
+
+* **`split(separator)`**: Splits a string into an array of substrings based on a delimiter.
+  - `split(",")`: Splits on commas.
+  - `split(" ")`: Splits on spaces.
+  - `split("")`: Splits into an array of individual characters.
+
+```javascript
+let data = "HTML,CSS,JavaScript";
+
+let arr = data.split(","); // ["HTML", "CSS", "JavaScript"]
+console.log(arr[0]);       // "HTML"
+
+let chars = "HELLO".split(""); // ["H", "E", "L", "L", "O"]
+```
+
+---
+
+### F. String Search Methods
+
+Methods for finding positions, checking existence, and matching patterns inside strings:
+
+| Search Method | Return Type | Description | Example |
+| :--- | :--- | :--- | :--- |
+| **`indexOf(match, start)`** | `number` | First index position of match (`-1` if not found) | `"Hello".indexOf("e")` $\rightarrow$ `1` |
+| **`lastIndexOf(match, start)`** | `number` | Last index position of match searching backwards | `"Hello".lastIndexOf("l")` $\rightarrow$ `3` |
+| **`search(regexp)`** | `number` | Searches string using Regex and returns match index | `"Hello".search(/E/i)` $\rightarrow$ `1` |
+| **`includes(match, start)`** | `boolean` | Returns `true` if string contains target substring | `"Hello".includes("ell")` $\rightarrow$ `true` |
+| **`startsWith(match, start)`** | `boolean` | Returns `true` if string begins with target substring | `"Hello".startsWith("He")` $\rightarrow$ `true` |
+| **`endsWith(match, length)`** | `boolean` | Returns `true` if string ends with target substring | `"Hello".endsWith("lo")` $\rightarrow$ `true` |
+| **`match(regexp)`** | `array` / `null` | Returns an array of matches or `null` | `"Hello".match(/l/g)` $\rightarrow$ `["l", "l"]` |
+| **`matchAll(regexp)`** | `iterator` | Returns an iterator of all matching groups (requires `/g`) | `text.matchAll(/cat/g)` |
+
+```javascript
+let str = "Please locate where 'locate' occurs!";
+
+console.log(str.indexOf("locate"));        // 7
+console.log(str.lastIndexOf("locate"));    // 21
+console.log(str.includes("locate"));       // true
+console.log(str.startsWith("Please"));     // true
+console.log(str.endsWith("occurs!"));      // true
+```
+
+---
+
+## 11. Hands-On Assignment Walkthroughs & Solutions
 
 Complete solution code for all curriculum exercises covering basic math, variable reassignment, and percentage calculations:
 
@@ -666,7 +817,7 @@ alert(num1 + num2); // Outputs: 3
 
 ---
 
-## 11. Best Practices & Common Pitfalls Cheat Sheet
+## 12. Best Practices & Common Pitfalls Cheat Sheet
 
 ### ✅ Do's
 - **Default to `const`**: Use `const` for all variable declarations by default; only switch to `let` when reassignment is required.
