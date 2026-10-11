@@ -2,7 +2,7 @@
 
 A comprehensive, production-grade reference guide and study document covering core JavaScript fundamentals: development setup, variable declarations and scoping, dynamic data typing, mathematical operations, operator precedence, increment/decrement rules, assignments, strict comparisons, and detailed practical exercise walkthroughs.
 
-Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (*Variables*, *Data types*, *Basic operators, maths*), and **MDN Web Docs** (*Basic math in JavaScript*, *Handling text — strings in JavaScript*), and **W3Schools** (*JavaScript String Methods & Search*).
+Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (*Variables*, *Data types*, *Basic operators, maths*), and **MDN Web Docs** (*Basic math in JavaScript*, *Handling text — strings in JavaScript*), and **W3Schools** (*JavaScript String Methods & Search*), and **MDN Web Docs** (*Making decisions in your code — conditionals*).
 
 ---
 
@@ -17,8 +17,9 @@ Grounded in curriculum material from **The Odin Project**, **JavaScript.info** (
 8. [Comparison & Specialized Operators](#8-comparison--specialized-operators)
 9. [Handling Text: Strings in JavaScript](#9-handling-text-strings-in-javascript)
 10. [JavaScript String Methods & Search (W3Schools Guide)](#10-javascript-string-methods--search-w3schools-guide)
-11. [Hands-On Assignment Walkthroughs & Solutions](#11-hands-on-assignment-walkthroughs--solutions)
-12. [Best Practices & Common Pitfalls Cheat Sheet](#12-best-practices--common-pitfalls-cheat-sheet)
+11. [Making Decisions in Code: Conditionals (MDN Guide)](#11-making-decisions-in-code-conditionals-mdn-guide)
+12. [Hands-On Assignment Walkthroughs & Solutions](#12-hands-on-assignment-walkthroughs--solutions)
+13. [Best Practices & Common Pitfalls Cheat Sheet](#13-best-practices--common-pitfalls-cheat-sheet)
 
 ---
 
@@ -755,7 +756,156 @@ console.log(str.endsWith("occurs!"));      // true
 
 ---
 
-## 11. Hands-On Assignment Walkthroughs & Solutions
+
+---
+
+## 11. Making Decisions in Code: Conditionals (MDN Guide)
+
+Conditionals allow a program to execute different code paths depending on whether a given logical test evaluates to `true` or `false`.
+
+---
+
+### A. The `if...else` Statement
+
+The `if...else` statement is the most fundamental decision-making structure in JavaScript.
+
+#### Basic Syntax
+```javascript
+if (condition) {
+  // Code executed if condition is true
+} else {
+  // Code executed if condition is false
+}
+```
+
+#### Multi-Branch Testing with `else if`
+Chain multiple conditions together to handle more than two outcomes:
+
+```javascript
+const weather = "sunny";
+
+if (weather === "sunny") {
+  console.log("Wear sunglasses and t-shirt.");
+} else if (weather === "rainy") {
+  console.log("Bring an umbrella and raincoat.");
+} else if (weather === "snowy") {
+  console.log("Wear a heavy coat and gloves.");
+} else {
+  console.log("Check weather report again.");
+}
+```
+
+---
+
+### B. Logical Operators (`&&`, `||`, `!`)
+
+Combine or invert boolean conditions to build complex decision logic:
+
+* **AND (`&&`)**: Returns `true` only if **all** conditions are true.
+  ```javascript
+  if (age >= 18 && hasID === true) {
+    console.log("Entry allowed.");
+  }
+  ```
+* **OR (`||`)**: Returns `true` if **at least one** condition is true.
+  ```javascript
+  if (day === "Saturday" || day === "Sunday") {
+    console.log("It's the weekend!");
+  }
+  ```
+* **NOT (`!`)**: Inverts the boolean result (`!true` $\rightarrow$ `false`, `!false` $\rightarrow$ `true`).
+  ```javascript
+  if (!isLoggedIn) {
+    console.log("Please log in first.");
+  }
+  ```
+
+---
+
+### C. The `switch` Statement
+
+Use `switch` as a cleaner alternative to long `if...else if` chains when comparing a single expression against multiple discrete values.
+
+#### Syntax
+```javascript
+switch (expression) {
+  case choice1:
+    // Code for choice1
+    break;
+  case choice2:
+    // Code for choice2
+    break;
+  default:
+    // Fallback code if no cases match
+}
+```
+
+#### Example
+```javascript
+const dayNumber = 3;
+
+switch (dayNumber) {
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  case 3:
+    console.log("Wednesday");
+    break;
+  default:
+    console.log("Invalid day number");
+}
+```
+
+> ⚠️ **The `break` Keyword**: Omitting `break` causes execution to "fall through" into subsequent cases regardless of whether they match the condition.
+
+---
+
+### D. The Ternary Operator (`? :`)
+
+A concise inline shortcut for simple `if...else` assignments. Takes three operands:
+
+$$\text{condition} \; ? \; \text{expressionIfTrue} \; : \; \text{expressionIfFalse}$$
+
+```javascript
+const age = 20;
+const greeting = age >= 18 ? "Welcome, adult!" : "Access restricted.";
+console.log(greeting); // "Welcome, adult!"
+```
+
+---
+
+### E. Truthy vs. Falsy Values
+
+JavaScript automatically coerces non-boolean expressions in conditional tests into booleans.
+
+* **Falsy Values** (Evaluate to `false` in conditionals):
+  - `false`
+  - `0` and `-0` (and `0n`)
+  - `""` (empty string)
+  - `null`
+  - `undefined`
+  - `NaN`
+
+* **Truthy Values** (Evaluate to `true` in conditionals):
+  - Everything else, including `"0"`, `"false"`, `[]` (empty array), and `{}` (empty object).
+
+```javascript
+let inputName = "";
+
+if (inputName) {
+  console.log(`Hello, ${inputName}`);
+} else {
+  console.log("No name provided."); // Executes because "" is falsy
+}
+```
+
+
+---
+
+## 12. Hands-On Assignment Walkthroughs & Solutions
 
 Complete solution code for all curriculum exercises covering basic math, variable reassignment, and percentage calculations:
 
@@ -817,7 +967,7 @@ alert(num1 + num2); // Outputs: 3
 
 ---
 
-## 12. Best Practices & Common Pitfalls Cheat Sheet
+## 13. Best Practices & Common Pitfalls Cheat Sheet
 
 ### ✅ Do's
 - **Default to `const`**: Use `const` for all variable declarations by default; only switch to `let` when reassignment is required.
