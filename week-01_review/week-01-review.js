@@ -9,3 +9,7 @@ console.log("5" - 2);// 3
 
 // 3. Operator precedence
 console.log(2 + 3 * 4);// 14
+
+// 4. Template literals
+const name = "Arun";
+console.log(`Hello, ${name}!`);// Hello, Arun
