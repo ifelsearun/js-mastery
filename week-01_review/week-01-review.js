@@ -13,3 +13,10 @@ console.log(2 + 3 * 4);// 14
 // 4. Template literals
 const name = "Arun";
 console.log(`Hello, ${name}!`);// Hello, Arun
+
+// 5. String methods
+const language = "JavaScript";
+console.log(language.length);// 10
+console.log(language.toUpperCase());// JAVASCRIPT
+console.log(language.slice(0, 4));// Java
+console.log(language.includes("Script"));// True
