@@ -25,7 +25,7 @@ console.log(language.includes("Script"));// true
 
 console.log(2 > 12);// false
 console.log("2" > "12");// true
-console.log(null == undefined); true
+console.log(null == undefined);// true
 console.log(null == "\n0\n");// false
 console.log(5 === "5");// false
 console.log(10 > 5 && 10 < 20);// true
