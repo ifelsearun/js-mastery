@@ -99,3 +99,22 @@ const result = first > second
 
 alert(result);
 
+// Challenge 6: Grade Calculator
+
+const mark = Number(prompt("Enter your marks (0-100): "));
+
+if (Number.isNaN(mark) || mark < 0 || mark > 100) {
+    alert("Please enter a valid mark between 0 and 100.");
+}else {
+    const result = mark >= 90
+                ? "your grade is A"
+                : mark >= 80
+                    ? "your grade is B"
+                    : mark >= 70
+                        ? "your grade is C"
+                        : mark >= 60
+                            ? "your grade is D"
+                            : "Fail"
+}
+
+alert(result);
