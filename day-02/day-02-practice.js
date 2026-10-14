@@ -77,7 +77,13 @@ let canVote = age >= 18 ? "You are eligible to vote!" : "You are NOT eligible to
 alert(canVote);
 
 
+// Challenge 4: Even or odd
 
+const number = Number(prompt("Enter a number: "));
+
+let answer = number % 2 === 0 ? "Number is Even" : "Number is Odd";
+
+alert(answer);
 
 
 
