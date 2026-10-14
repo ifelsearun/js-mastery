@@ -14,3 +14,16 @@ for (let num = 0; num < numbers.length; num++) {
 console.log(count);
 
 
+// find average 
+
+let size = numbers.length;
+
+let sum = 0;
+
+for (let i = 0; i < size; i++) {
+    sum += numbers[i];
+}
+
+const average = sum / size;
+
+console.log(`Average = ${average}`);
