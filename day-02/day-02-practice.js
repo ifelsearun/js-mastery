@@ -68,7 +68,13 @@ switch (operator){
 }
 
 
+// Challenge 3: Age eligibility
 
+const age = Number(prompt("Enter you age: "));
+
+let canVote = age >= 18 ? "You are eligible to vote!" : "You are NOT eligible to vote!";
+
+alert(canVote);
 
 
 
