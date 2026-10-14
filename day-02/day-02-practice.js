@@ -86,5 +86,16 @@ let answer = number % 2 === 0 ? "Number is Even" : "Number is Odd";
 alert(answer);
 
 
+// Challenge 5: Compare two numbers
 
+const first = 45;
+const second = 23;
+
+const result = first > second 
+            ? "first is greater" 
+            : first < second 
+                ? "second is greater" 
+                : " Both are equal" ;
+
+alert(result);
 
