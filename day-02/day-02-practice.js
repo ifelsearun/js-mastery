@@ -4,35 +4,35 @@ let day = Number(prompt("Enter a number (1-7): "));
 
 switch (day) {
     case 1:
-        alert("Sunday");
+        console.log("Sunday");
         break;
 
     case 2:
-        alert("Monday");
+        console.log("Monday");
         break;
 
     case 3:
-        alert("Tuesday");
+        console.log("Tuesday");
         break;
 
     case 4:
-        alert("Wednesday");
+        console.log("Wednesday");
         break;
 
     case 5:
-        alert("Thursday");
+        console.log("Thursday");
         break;
 
     case 6:
-        alert("Friday");
+        console.log("Friday");
         break;
 
     case 7:
-        alert("Saturday");
+        console.log("Saturday");
         break;
 
     default:
-        alert("Invalid!");
+        console.log("Invalid!");
 
 }
 
@@ -46,25 +46,25 @@ const b = Number(prompt("Enter b: "));
 
 const operator = prompt("Enter operator (+,-,*,/): ");
 
-switch (operator){
+switch (operator) {
     case "+":
-        alert(`a + b = ${a + b}`);
+        console.log(`a + b = ${a + b}`);
         break;
 
     case "-":
-        alert(`a - b = ${a - b}`);
+        console.log(`a - b = ${a - b}`);
         break;
 
     case "*":
-        alert(`a * b = ${a * b}`);
+        console.log(`a * b = ${a * b}`);
         break;
 
     case "/":
-        alert(`a / b = ${a / b}`);
+        console.log(`a / b = ${a / b}`);
         break;
 
     default:
-        alert("Invalid operator!");
+        console.log("Invalid operator!");
 }
 
 
@@ -74,7 +74,7 @@ const age = Number(prompt("Enter you age: "));
 
 let canVote = age >= 18 ? "You are eligible to vote!" : "You are NOT eligible to vote!";
 
-alert(canVote);
+console.log(canVote);
 
 
 // Challenge 4: Even or odd
@@ -83,7 +83,7 @@ const number = Number(prompt("Enter a number: "));
 
 let answer = number % 2 === 0 ? "Number is Even" : "Number is Odd";
 
-alert(answer);
+console.log(answer);
 
 
 // Challenge 5: Compare two numbers
@@ -91,30 +91,30 @@ alert(answer);
 const first = 45;
 const second = 23;
 
-const result = first > second 
-            ? "first is greater" 
-            : first < second 
-                ? "second is greater" 
-                : " Both are equal" ;
+let result = first > second
+    ? "first is greater"
+    : first < second
+        ? "second is greater"
+        : " Both are equal";
 
-alert(result);
+console.log(result);
 
 // Challenge 6: Grade Calculator
 
 const mark = Number(prompt("Enter your marks (0-100): "));
 
 if (Number.isNaN(mark) || mark < 0 || mark > 100) {
-    alert("Please enter a valid mark between 0 and 100.");
-}else {
-    const result = mark >= 90
-                ? "your grade is A"
-                : mark >= 80
-                    ? "your grade is B"
-                    : mark >= 70
-                        ? "your grade is C"
-                        : mark >= 60
-                            ? "your grade is D"
-                            : "Fail"
+    console.log("Please enter a valid mark between 0 and 100.");
+} else {
+    result = mark >= 90
+        ? "your grade is A"
+        : mark >= 80
+            ? "your grade is B"
+            : mark >= 70
+                ? "your grade is C"
+                : mark >= 60
+                    ? "your grade is D"
+                    : "Fail"
 }
 
-alert(result);
+console.log(result);
