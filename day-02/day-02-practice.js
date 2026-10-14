@@ -38,7 +38,34 @@ switch (day) {
 
 
 
+// Challenge 2: Simple calculator
 
+const a = Number(prompt("Enter a: "));
+
+const b = Number(prompt("Enter b: "));
+
+const operator = prompt("Enter operator (+,-,*,/): ");
+
+switch (operator){
+    case "+":
+        alert(`a + b = ${a + b}`);
+        break;
+
+    case "-":
+        alert(`a - b = ${a - b}`);
+        break;
+
+    case "*":
+        alert(`a * b = ${a * b}`);
+        break;
+
+    case "/":
+        alert(`a / b = ${a / b}`);
+        break;
+
+    default:
+        alert("Invalid operator!");
+}
 
 
 
