@@ -27,3 +27,25 @@ for (let num = 0; num < size; num++) {
 }
 console.log(`Sum : ${sum}`);
 console.log(`Average : ${sum / size}`);
+console.log('');
+
+
+
+// Challenge 3: Find the second-largest number
+
+numbers = [12, 45, 7, 89, 89, 23, 56];
+
+let largest = -Infinity;
+let secondLargest = -Infinity;
+
+for (i = 0; i < numbers.length; i++) {
+    if (numbers[i] > largest) {
+        secondLargest = largest;
+        largest = numbers[i];
+    } else if (numbers[i] > secondLargest && numbers[i] !== largest) {
+        secondLargest = numbers[i];
+    }
+}
+
+console.log(`Largest : ${largest}.`);
+console.log(`Second Largest : ${secondLargest}.`);
