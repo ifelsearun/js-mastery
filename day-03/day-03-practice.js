@@ -62,3 +62,21 @@ let greatest = (a > b)
         ? 'b is greatest' : 'Both are equal';
 
 console.log(greatest);
+
+
+// Challenge 5: Movie ticket pricing 🎬
+
+let age = Number(prompt('Enter your age: '));
+
+let price;
+
+if (age <= 0) {
+    console.log("That's an unusual age!")
+} else {
+    price = (age < 5)
+        ? 'Free' : (age <= 17)
+            ? '₹100' : (age <= 59)
+                ? '₹200' : (age >= 60)
+                    ? '₹120' : 'age not entered';
+}
+console.log(price);
