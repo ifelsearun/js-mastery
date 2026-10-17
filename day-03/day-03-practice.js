@@ -50,3 +50,15 @@ const temperature = 32;
 let message = (temperature >= 30) ? "It's hot!" : "It's not too hot.";
 
 console.log(message);
+
+
+// Challenge 4: Find the greater number
+
+const a = 45;
+const b = 45;
+
+let greatest = (a > b)
+    ? 'a is greatest' : (b > a)
+        ? 'b is greatest' : 'Both are equal';
+
+console.log(greatest);
