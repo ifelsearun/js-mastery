@@ -33,7 +33,7 @@ if (value) {
 
 // Challenge 2: Positive, negative, or zero
 
-let number = Number(prompt('Enter a number: '));
+let number = Number(prompt('Enter a number: ', 0));
 
 if (number < 0) {
     console.log('Negative');
@@ -42,3 +42,11 @@ if (number < 0) {
 } else {
     console.log('Zero');
 }
+
+// Challenge 3: Rewrite using the ternary operator
+
+const temperature = 32;
+
+let message = (temperature >= 30) ? "It's hot!" : "It's not too hot.";
+
+console.log(message);
