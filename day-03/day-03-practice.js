@@ -80,3 +80,17 @@ if (age <= 0) {
                     ? '₹120' : 'age not entered';
 }
 console.log(price);
+
+
+// Challenge 6: Rewrite multiple conditions
+
+const score = 75;
+
+let grade = (score >= 90)
+    ? 'A' : (score >= 80)
+        ? 'B' : (score >= 70)
+            ? 'C' : (score >= 60)
+                ? 'D' : 'F';
+
+console.log(grade);
+
