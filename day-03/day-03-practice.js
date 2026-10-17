@@ -93,4 +93,3 @@ let grade = (score >= 90)
                 ? 'D' : 'F';
 
 console.log(grade);
-
