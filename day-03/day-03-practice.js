@@ -1,7 +1,7 @@
 // Challenge 1: Will the condition run?
 
 if ("0") {
-    console.log("Hello");
+    console.log("Hello");// 'Hello'
 } else {
     console.log("Goodbye");
 }
@@ -9,7 +9,7 @@ if ("0") {
 if ("") {
     console.log("Hello");
 } else {
-    console.log("Goodbye");
+    console.log("Goodbye");// 'Goodbye'
 }
 
 
@@ -18,14 +18,14 @@ let value = 0;
 if (value) {
     console.log("True");
 } else {
-    console.log("False");
+    console.log("False");// 'False'
 }
 
 
 value = "false";
 
 if (value) {
-    console.log("True");
+    console.log("True");// 'True'
 } else {
     console.log("False");
 }
