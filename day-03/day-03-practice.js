@@ -29,3 +29,16 @@ if (value) {
 } else {
     console.log("False");
 }
+
+
+// Challenge 2: Positive, negative, or zero
+
+let number = Number(prompt('Enter a number: '));
+
+if (number < 0) {
+    console.log('Negative');
+} else if (number > 0) {
+    console.log('Positive');
+} else {
+    console.log('Zero');
+}
