@@ -35,7 +35,9 @@ if (value) {
 
 let number = Number(prompt('Enter a number: ', 0));
 
-if (number < 0) {
+if (Number.isNaN(number)) {
+    console.log('Enter a valid number!')
+} else if (number < 0) {
     console.log('Negative');
 } else if (number > 0) {
     console.log('Positive');
@@ -45,7 +47,7 @@ if (number < 0) {
 
 // Challenge 3: Rewrite using the ternary operator
 
-const temperature = 32;
+let temperature = 32;
 
 let message = (temperature >= 30) ? "It's hot!" : "It's not too hot.";
 
@@ -70,16 +72,15 @@ let age = Number(prompt('Enter your age: '));
 
 let price;
 
-if (age <= 0) {
-    console.log("That's an unusual age!")
+if (Number.isNaN(age) || age <= 0) {
+    console.log("Enter a valid age!")
 } else {
     price = (age < 5)
         ? 'Free' : (age <= 17)
             ? '₹100' : (age <= 59)
-                ? '₹200' : (age >= 60)
-                    ? '₹120' : 'age not entered';
+                ? '₹200' : '₹120';
 }
-console.log(price);
+console.log(`Your ticket price is ${price}, enjoy the movie.`);
 
 
 // Challenge 6: Rewrite multiple conditions
@@ -93,3 +94,24 @@ let grade = (score >= 90)
                 ? 'D' : 'F';
 
 console.log(grade);
+
+// challenge 7: login checker
+
+const username = prompt("Enter your username: ", '').trim();
+const password = prompt("Enter your password: ", '').trim();
+
+let result;
+
+if (username === '' && password === '') {
+    result = "Please enter your username and password.";
+} else if (username === '') {
+    result = "Username is required.";
+} else if (password === '') {
+    result = "Password is required.";
+} else if (username === 'student' && password === 'pass123') {
+    result = "Login successful!";
+} else {
+    result = "Invalid username or password.";
+}
+
+alert(result);
