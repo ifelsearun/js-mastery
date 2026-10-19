@@ -26,3 +26,22 @@ switch (month) {
     default:
         console.log("Invalid month!");
 }
+
+
+// Challenge 2: Browser support
+
+const browser = prompt("Enter your browser : ", '');
+
+switch (browser) {
+    case "Edge":
+        console.log("You are using Edge.");
+        break;
+    case "Chrome":
+    case "Firefox":
+    case "Safari":
+    case 'Opera':
+        console.log("Browser supported");
+        break;
+    default:
+        console.log("Anonymous browser");
+}
