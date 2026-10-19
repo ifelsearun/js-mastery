@@ -36,4 +36,9 @@ for (let num = 0; num < numbers1.length; num++) {
 }
 
 console.log(`Smallest : ${smallest}`);
-console.log(`Second smallest : ${secondSmallest}`);
+
+if (secondSmallest === Infinity) {
+    console.log("No second-smallest distinct number exists.");
+} else {
+    console.log(`Second smallest : ${secondSmallest}`);
+}
